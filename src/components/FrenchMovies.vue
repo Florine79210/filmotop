@@ -1,16 +1,18 @@
 <template>
-  <div class="container">
-    <h3 class="text-white mb-5 pb-5">Films Français:</h3>
+  <div class="container mt-5 pt-5">
+    <h3 class="text-white mt-5 mb-3">Films Français:</h3>
     <MoviesList :movies="movies" />
   </div>
 </template>
 
 <script>
+
 import axios from "axios";
 import MoviesList from "./MoviesList.vue";
+
 export default {
   name: "FrenchMovies",
- 
+
   components: {
     MoviesList,
   },
@@ -24,11 +26,22 @@ export default {
   created: function () {
     axios
       .get(
-        "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&language=fr&region=fr&sort_by=popularity.desc&include_adult=false&include_video=false&with_original_language=fr"
+        "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&language=fr&region=fr&sort_by=popularity.desc&include_adult=false&include_video=false&with_original_language=fr&page=1"
       )
       .then((res) => {
         this.movies = res.data.results;
         console.log(this.movies);
+
+        axios
+          .get(
+            "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&language=fr&region=fr&sort_by=popularity.desc&include_adult=false&include_video=false&with_original_language=fr&page=2"
+          )
+          .then((res) => {
+            res.data.results.forEach((movie) => {
+              this.movies.push(movie);
+            });
+            console.log(this.movies);
+          });
       });
   },
 };

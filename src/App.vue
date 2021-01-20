@@ -2,10 +2,8 @@
   <div id="app">
     <Header />
 
-    <router-link to="/Test"> Test </router-link>
-
-    <div v-if="$route.path == '/'">
-      <h3 class="text-white mb-5 pb-5">Tous les films:</h3>
+    <div class="mt-5 pt-5" v-if="$route.path == '/'">
+      <h3 class="text-white mt-5 mb-3">Tous les films:</h3>
       <MoviesList :movies="movies" />
     </div>
 
@@ -22,7 +20,7 @@ import Header from "./components/Header.vue";
 
 export default {
   name: "App",
- 
+
   components: {
     MoviesList,
     Header,
@@ -34,10 +32,7 @@ export default {
     };
   },
 
-  created:() {
-    get AllMovies()
-    {
-     
+  created: function () {
     axios
       .get(
         "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&sort_by=popularity.desc&include_adult=false&include_video=false&page=1"
@@ -47,18 +42,18 @@ export default {
         console.log(this.movies);
 
         axios
-      .get(
-        "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&sort_by=popularity.desc&include_adult=false&include_video=false&page=2"
-      )
-      .then((res) => {
-        res.data.results.forEach(movie=>{
-          this.movies.push(movie)
-        })
-        console.log(this.movies);
-
-      });  
-  }
-    }}}
+          .get(
+            "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&sort_by=popularity.desc&include_adult=false&include_video=false&page=2"
+          )
+          .then((res) => {
+            res.data.results.forEach((movie) => {
+              this.movies.push(movie);
+            });
+            console.log(this.movies);
+          });
+      });
+  },
+};
 </script>
 
 <style>

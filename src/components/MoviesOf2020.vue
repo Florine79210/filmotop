@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <h3 class="text-white mb-5 pb-5">Films de 2020:</h3>
+  <div class="container mt-5 pt-5">
+    <h3 class="text-white mt-5 mb-3">Films de 2020:</h3>
     <MoviesList :movies="movies" />
   </div>
 </template>
@@ -11,7 +11,7 @@ import MoviesList from "./MoviesList.vue";
 
 export default {
   name: "MoviesOf2020",
- 
+
   components: {
     MoviesList,
   },
@@ -25,11 +25,22 @@ export default {
   created: function () {
     axios
       .get(
-        "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&sort_by=release_date.desc&include_adult=false&include_video=false&release_date.gte=2020&year=2020"
+        "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&primary_release_year=2020&include_adult=false&include_video=false&release_date.gte=2020&year=2020&page=1"
       )
       .then((res) => {
         this.movies = res.data.results;
         console.log(this.movies);
+
+        axios
+          .get(
+            "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&primary_release_year=2020&include_adult=false&include_video=false&release_date.gte=2020&year=2020&page=2"
+          )
+          .then((res) => {
+            res.data.results.forEach((movie) => {
+              this.movies.push(movie);
+            });
+            console.log(this.movies);
+          });
       });
   },
 };

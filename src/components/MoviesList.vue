@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <SortBy
+      :movies="movies"
+     />
 
     <li class="list-unstyled" v-for="movie in movies" :key="movie.id">
       <Movie
@@ -17,12 +20,14 @@
 <script>
 
 import Movie from "./Movie.vue";
+import SortBy from "./SortBy.vue";
 
 export default {
   name: "MoviesList",
    props:["movies"],
   components: {
-    Movie
+    Movie,
+    SortBy,
   },
   
 }

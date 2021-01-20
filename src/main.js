@@ -6,7 +6,6 @@ import FrenchMovies from "./components/FrenchMovies.vue";
 import AmericanMovies from "./components/AmericanMovies.vue";
 import MoviesOf2020 from "./components/MoviesOf2020.vue";
 import VoteAverageMovies from "./components/VoteAverageMovies.vue";
-import Test from "./components/Test.vue";
 
 Vue.use(VueRouter);
 
@@ -17,7 +16,6 @@ const routes = [
   { path: "/AmericanMovies", component: AmericanMovies },
   { path: "/Moviesof2020", component: MoviesOf2020 },
   { path: "/VoteAverageMovies", component: VoteAverageMovies },
-  { path: "/Test", component: Test },
 ];
 
 const router = new VueRouter({
@@ -29,3 +27,6 @@ new Vue({
   render: (h) => h(App),
   router,
 }).$mount("#app");
+
+
+

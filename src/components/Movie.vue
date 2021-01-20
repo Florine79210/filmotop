@@ -4,7 +4,7 @@
     <img v-bind:src="'http://image.tmdb.org/t/p/w500/' + poster_path" width="150px"/>
     <div class="row pt-2">
       <h4>Moyenne: {{ vote_average }}</h4>
-      <h4>Réalisé en: {{ release_date }}</h4>
+      <h4>Réalisé le: {{ release_date }}</h4>
     </div>
   </div>
 </template>

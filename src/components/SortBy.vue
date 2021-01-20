@@ -3,7 +3,7 @@
   <div class="container mt-2 mb-2 text-end">
     <div class="dropdown">
       <a
-        class="dropdown-toggle p-2 text-dark bg-white"
+        class="dropdown-toggle p-3 text-dark bg-white"
         href="#"
         id="dropdownSortBy"
         role="button"
@@ -24,11 +24,18 @@
         </li>
 
         <li>
-          <button class="btn dropdown-item text-dark">Moyenne des notes</button>
+          <button
+            class="btn dropdown-item text-dark"
+            v-on:click="sortByAverage()"
+          >
+            Moyenne des notes
+          </button>
         </li>
 
         <li>
-          <button class="btn dropdown-item text-dark">Date de sortie</button>
+          <button class="btn dropdown-item text-dark" v-on:click="sortByDate()">
+            Date de sortie
+          </button>
         </li>
       </ul>
     </div>
@@ -44,29 +51,59 @@ export default {
   data() {
     return {
       sortedByTitle: false,
-      sortedByDate: false,
       sortedByAverage: false,
+      sortedByDate: false,
     };
   },
 
   methods: {
-
     sortByTitle() {
-      if (this.sortedByTitle === false) {
+      if (!this.sortedByTitle) {
+        this.sortedByTitle = true;
         return this.movies.sort((a, b) => {
           if (a.title < b.title) return -1;
           return a.title > b.title ? 1 : 0;
-          return (this.sortedByTitle = true);
         });
       } else {
+        this.sortedByTitle = false;
         return this.movies.sort((a, b) => {
           if (a.title > b.title) return -1;
           return a.title < b.title ? 1 : 0;
-          return (this.sortedByTitle = false);
         });
-      };
+      }
     },
-    
+
+    sortByAverage() {
+      if (!this.sortedByAverage) {
+        this.sortedByAverage = true;
+        return this.movies.sort((a, b) => {
+          if (a.vote_average < b.vote_average) return -1;
+          return a.vote_average > b.vote_average ? 1 : 0;
+        });
+      } else {
+        this.sortedByAverage = false;
+        return this.movies.sort((a, b) => {
+          if (a.vote_average > b.vote_average) return -1;
+          return a.vote_average < b.vote_average ? 1 : 0;
+        });
+      }
+    },
+
+    sortByDate() {
+      if (!this.sortedByDate) {
+        this.sortedByDate = true;
+        return this.movies.sort((a, b) => {
+          if (a.release_date < b.release_date) return -1;
+          return a.release_date > b.release_date ? 1 : 0;
+        });
+      } else {
+        this.sortedByDate = false;
+        return this.movies.sort((a, b) => {
+          if (a.release_date > b.release_date) return -1;
+          return a.release_date < b.release_date ? 1 : 0;
+        });
+      }
+    },
   },
 };
 </script>

@@ -3,7 +3,7 @@
     <Header />
 
     <div class="mt-5 pt-5" v-if="$route.path == '/'">
-      <h3 class="text-white mt-5 mb-3">Tous les films:</h3>
+      <h1 class="text-white mt-5 mb-3">Tous les films:</h1>
       <MoviesList :movies="movies" />
     </div>
 

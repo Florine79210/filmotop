@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5 pt-5">
-    <h3 class="text-white mt-5 mb-3">Films Americains:</h3>
+    <h1 class="text-white mt-5 mb-3">Films Americains:</h1>
     <MoviesList :movies="movies" />
   </div>
 </template>

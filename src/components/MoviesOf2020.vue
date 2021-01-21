@@ -47,7 +47,5 @@ export default {
 </script>
 
 <style>
-h3 {
-  margin-bottom: 5%;
-}
+
 </style>

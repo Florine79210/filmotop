@@ -3,7 +3,8 @@
   <div class="container mt-2 mb-2 text-end">
     <div class="dropdown">
       <a
-        class="dropdown-toggle p-3 text-dark bg-white"
+        style="border-radius: 10px"
+        class="dropdown-toggle p-3 text-dark bg-white border border-white"
         href="#"
         id="dropdownSortBy"
         role="button"
@@ -13,27 +14,21 @@
         Trier par
       </a>
 
-      <ul class="dropdown-menu" aria-labelledby="dropdownSortBy">
+      <ul class="dropdown-menu p-4" aria-labelledby="dropdownSortBy">
         <li>
-          <button
-            class="btn dropdown-item text-dark"
-            v-on:click="sortByTitle()"
-          >
+          <button class="btn dropdown-item sort" v-on:click="sortByTitle()">
             Titre
           </button>
         </li>
 
         <li>
-          <button
-            class="btn dropdown-item text-dark"
-            v-on:click="sortByAverage()"
-          >
+          <button class="btn dropdown-item sort" v-on:click="sortByAverage()">
             Moyenne des notes
           </button>
         </li>
 
         <li>
-          <button class="btn dropdown-item text-dark" v-on:click="sortByDate()">
+          <button class="btn dropdown-item sort" v-on:click="sortByDate()">
             Date de sortie
           </button>
         </li>
@@ -107,3 +102,17 @@ export default {
   },
 };
 </script>
+
+<style >
+.sort {
+  color: #000000;
+  /* background-color: #ffffff; */
+}
+.sort:hover {
+  transform: scale(1.2);
+  transition: 1.5s;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #000000;
+}
+</style>

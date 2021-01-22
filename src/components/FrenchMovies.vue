@@ -1,12 +1,16 @@
 <template>
   <div class="container mt-5 pt-5">
-    <h1 class="text-white mt-5 mb-3">Films Français:</h1>
-    <MoviesList :movies="movies" />
+    <div v-if="error === true" class="error text-danger pt-5 mt-5">
+      <p>Echec de la requête !!!</p>
+    </div>
+    <div v-else>
+      <h1 class="text-white mt-5 mb-3">Films Français:</h1>
+      <MoviesList :movies="movies" />
+    </div>
   </div>
 </template>
 
 <script>
-
 import axios from "axios";
 import MoviesList from "./MoviesList.vue";
 
@@ -20,6 +24,7 @@ export default {
   data() {
     return {
       movies: null,
+      error: false,
     };
   },
 
@@ -41,14 +46,23 @@ export default {
               this.movies.push(movie);
             });
             console.log(this.movies);
+          })
+          .catch((error) => {
+            this.error = true;
+            console.log(error);
           });
+      })
+      .catch((error) => {
+        this.error = true;
+        console.log(error);
       });
   },
 };
 </script>
 
 <style>
-h3 {
-  margin-bottom: 5%;
+h1 {
+font-weight: bold;
+font-size: 50px;
 }
 </style>

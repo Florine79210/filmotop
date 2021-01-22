@@ -2,20 +2,53 @@
   <div
     id="movieDetails"
     style="border-radius: 20px"
-    class="container pt-5 pb-2 mt-5 mb-3 w-75 bg-white border border-white"
+    class="container pt-4 pb-2 mb-5 w-50 bg-white border border-white"
   >
-    <h3 class="pb-2 text-dark">{{ movie.title }}</h3>
-    <img
-      v-bind:src="'http://image.tmdb.org/t/p/w500/' + movie.poster_path"
-      width="200px"
-    />
+    <div v-if="error === true" class="error text-danger pt-3">
+      <p>Echec de la requête !!!</p>
+    </div>
+    <div v-else>
+      <div class="row justify-content-center">
+        <div class="col-10">
+          <h3 class="pb-1 text-center text-dark">{{ movie.title }}</h3>
+          <img
+            class="pb-4"
+            v-bind:src="'http://image.tmdb.org/t/p/w500/' + movie.backdrop_path"
+            width="600px"
+          />
+          <div v-if="movie.tagline !== ''">
+            <h4 class="text-center pt-3 pb-4 text-dark">
+              "{{ movie.tagline }}"
+            </h4>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-7 align-self-center">
+              <p class="text-start">
+                <span>Moyenne: </span>{{ movie.vote_average }}
+              </p>
+              <p class="text-start">
+                <span>Date de sortie: </span
+                >{{ movie.release_date | moment("DD/MM/YYYY") }}
+              </p>
+              <div v-if="movie.overview !== ''">
+                <p class="text-start">
+                  <span>Résumé: </span>{{ movie.overview }}
+                </p>
+              </div>
+            </div>
 
-    <h4 class="text-start pb-2"><span>Moyenne: </span>{{ movie.vote_average }}</h4>
-    <p class="text-start">
-      <span>Date de sortie: </span
-      >{{ movie.release_date | moment("Do dddd MMMM YYYY") }}
-    </p>
-    <p class="text-start"><span>Résumé: </span>{{ movie.overview }}</p>
+            <div class="col-5 align-self-center">
+              <img
+                v-bind:src="
+                  'http://image.tmdb.org/t/p/w500/' + movie.poster_path
+                "
+                width="180px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -25,48 +58,48 @@ import axios from "axios";
 export default {
   name: "MovieDetails",
 
-//    props: [
-//     "id",
-//     "title",
-//     "poster_path",
-//     "vote_average",
-//     "release_date",
-//     "overview",
-//   ],
-
   data() {
     return {
       id: this.$route.params.id,
       movie: null,
+      error: false,
     };
   },
 
   methods: {
-       getMovieById(component) {
-    axios.
-    get(
-      "https://api.themoviedb.org/3/movie/" + component.id + "?api_key=3ea8988340d4ed715d28b9978346c29e"
-    ).then(function(response) {
-      component.movie = response.data;
-      console.log(component.movie);
-    });
-  }
+    getMovieById(component) {
+      axios
+        .get(
+          "https://api.themoviedb.org/3/movie/" +
+            component.id +
+            "?api_key=3ea8988340d4ed715d28b9978346c29e&language=fr"
+        )
+        .then(function (response) {
+          component.movie = response.data;
+          console.log(component.movie);
+        })
+        .catch((error) => {
+          this.error = true;
+          console.log(error);
+        });
+    },
   },
 
   created() {
-      this.getMovieById(this)
+    this.getMovieById(this);
   },
-  
-
-}
+};
 </script>
 
 <style>
 h3 {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 40px;
 }
 span {
   font-weight: bold;
+}
+#movieDetails {
+  margin-top: 150px;
 }
 </style>

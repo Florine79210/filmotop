@@ -1,7 +1,12 @@
 <template>
   <div class="container mt-5 pt-5">
+        <div v-if="error === true" class="error text-danger pt-5 mt-5">
+      <p>Echec de la requête !!!</p>
+    </div>
+    <div v-else>
     <h1 class="text-white mt-5 mb-3">Films les mieux notés:</h1>
     <MoviesList :movies="movies" />
+    </div>
   </div>
 </template>
 
@@ -20,13 +25,14 @@ export default {
   data() {
     return {
       movies: null,
+            error: false,
     };
   },
 
   created: function () {
     axios
       .get(
-          "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1"
+          "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&sort_by=vote_average.desc&vote_count.gte=1000&language=fr&include_adult=false&include_video=false&page=1"
       )
       .then((res) => {
         this.movies = res.data.results;
@@ -34,22 +40,31 @@ export default {
 
           axios
       .get(
-          "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&sort_by=vote_average.desc&include_adult=false&include_video=false&page=2"
+          "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&sort_by=vote_average.desc&vote_count.gte=1000&language=fr&include_adult=false&include_video=false&page=2"
       )
       .then((res) => {
          res.data.results.forEach((movie) => {
               this.movies.push(movie);
             });
             console.log(this.movies);
+          })
+          .catch((error) => {
+            this.error = true;
+            console.log(error);
           });
 
-      });
+      })
+      .catch((error) => {
+            this.error = true;
+            console.log(error);
+          });
   },
 };
 </script>
 
 <style>
-h3 {
-  margin-bottom: 5%;
+h1 {
+font-weight: bold;
+font-size: 50px;
 }
 </style>

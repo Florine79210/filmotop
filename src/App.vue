@@ -2,13 +2,18 @@
   <div id="app">
     <Header />
 
-    <div class="mt-5 pt-5" v-if="$route.path == '/'">
-      <h1 class="text-white mt-5 mb-3">Tous les films:</h1>
-      <MoviesList :movies="movies" />
+    <div v-if="error === true" class="error text-danger pt-5 mt-5">
+      <p>Echec de la requête !!!</p>
     </div>
-
     <div v-else>
-      <router-view :key="$route.fullPath"></router-view>
+      <div class="mt-5 pt-5" v-if="$route.path == '/'">
+        <h1 class="text-white mt-5 mb-3">Tous les films:</h1>
+        <MoviesList :movies="movies" />
+      </div>
+
+      <div v-else>
+        <router-view :key="$route.fullPath"></router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -29,28 +34,38 @@ export default {
   data() {
     return {
       movies: null,
+      error: false,
     };
   },
 
   created: function () {
     axios
       .get(
-        "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&sort_by=popularity.desc&include_adult=false&include_video=false&page=1"
+        "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&sort_by=popularity.desc&language=fr&include_adult=false&include_video=false&page=1"
       )
+
       .then((res) => {
         this.movies = res.data.results;
         console.log(this.movies);
 
         axios
           .get(
-            "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&sort_by=popularity.desc&include_adult=false&include_video=false&page=2"
+            "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&sort_by=popularity.desc&language=fr&include_adult=false&include_video=false&page=2"
           )
           .then((res) => {
             res.data.results.forEach((movie) => {
               this.movies.push(movie);
             });
             console.log(this.movies);
+          })
+          .catch((error) => {
+            this.error = true;
+            console.log(error);
           });
+      })
+      .catch((error) => {
+        this.error = true;
+        console.log(error);
       });
   },
 };
@@ -63,6 +78,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.error {
+  font-size: 50px;
+  font-weight: bold;
+}
+h1 {
+font-weight: bold;
+font-size: 40px;
 }
 </style>

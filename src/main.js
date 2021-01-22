@@ -8,6 +8,7 @@ import MoviesOf2020 from "./components/MoviesOf2020.vue";
 import VoteAverageMovies from "./components/VoteAverageMovies.vue";
 import MovieDetails from "./components/MovieDetails.vue";
 
+
 Vue.use(VueRouter);
 Vue.use(require('vue-moment'));
 
@@ -30,6 +31,8 @@ new Vue({
   render: (h) => h(App),
   router,
 }).$mount("#app");
+
+
 
 
 

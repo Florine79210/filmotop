@@ -2,18 +2,18 @@
   <div
     id="movie"
     style="border-radius: 20px"
-    class="container pt-3 pb-2 mt-3 mb-3 w-50 bg-white"
+    class="container p-3 mt-3 mb-3 w-75 bg-white"
   >
     <router-link :to="`/MovieDetails/${id}`" style="text-decoration: none">
       <div class="row">
         <div class="col-5 align-self-center">
           <img
             v-bind:src="'http://image.tmdb.org/t/p/w500/' + poster_path"
-            width="200px"
+            width="300px"
           />
         </div>
-        <div class="col-7">
-          <h3 class="pb-3 text-dark">{{ title }}</h3>
+        <div class="col-7 p-4">
+          <h3 class="pb-4 text-dark">{{ title }}</h3>
           <h4 class="text-start pb-2 text-dark">
             <span>Moyenne: </span>{{ vote_average }}
           </h4>
@@ -56,7 +56,17 @@ export default {
 }
 h3 {
   font-weight: bold;
+  font-size: 50px; /*  Impossible de changer la taille ???  */
+  font-family: 'Playball', cursive;
+}
+h4, p {
+  font-family: 'Vollkorn', serif;
+}
+h4 {
   font-size: 30px;
+}
+p {
+  font-size: 20px;
 }
 span {
   font-weight: bold;

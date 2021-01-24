@@ -64,5 +64,6 @@ export default {
 h1 {
 font-weight: bold;
 font-size: 50px;
+font-family: 'Vollkorn', serif;
 }
 </style>

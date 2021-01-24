@@ -104,9 +104,15 @@ export default {
 </script>
 
 <style >
+#dropdownSortBy {
+  font-family: 'Vollkorn', serif;
+  font-size: 25px;
+  text-decoration: none;
+}
 .sort {
   color: #000000;
-  /* background-color: #ffffff; */
+  font-family: 'Vollkorn', serif;
+  font-size: 20px;
 }
 .sort:hover {
   transform: scale(1.2);

@@ -10,7 +10,7 @@
     <div v-else>
       <div class="row justify-content-center">
         <div class="col-10">
-          <h3 class="pb-1 text-center text-dark">{{ movie.title }}</h3>
+          <h3 class="pt-3 pb-4 text-center text-dark">{{ movie.title }}</h3>
           <img
             class="pb-4"
             v-bind:src="'http://image.tmdb.org/t/p/w500/' + movie.backdrop_path"
@@ -23,15 +23,15 @@
           </div>
           <div class="row justify-content-center">
             <div class="col-7 align-self-center">
-              <p class="text-start">
+              <p class="text-start text-dark">
                 <span>Moyenne: </span>{{ movie.vote_average }}
               </p>
-              <p class="text-start">
+              <p class="text-start text-dark">
                 <span>Date de sortie: </span
                 >{{ movie.release_date | moment("DD/MM/YYYY") }}
               </p>
               <div v-if="movie.overview !== ''">
-                <p class="text-start">
+                <p class="text-start text-dark">
                   <span>Résumé: </span>{{ movie.overview }}
                 </p>
               </div>
@@ -94,7 +94,18 @@ export default {
 <style>
 h3 {
   font-weight: bold;
+  font-size: 55px;
+  font-family: 'Playball', cursive;
+}
+h4 {
+  font-family: 'Playball', cursive;
+  font-style: italic;
+  font-weight: bold;
   font-size: 40px;
+}
+p {
+  font-family: 'Vollkorn', serif;
+  font-size: 20px;
 }
 span {
   font-weight: bold;

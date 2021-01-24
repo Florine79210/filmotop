@@ -1,11 +1,11 @@
 <template>
   <header class="pb-4">
     <nav
-      class="navbar navbar-expand-lg navbar-dark bg-white border border-bottom-dark fixed-top"
+      class="navbar navbar-expand-lg navbar-dark bg-white fixed-top"
     >
       <div class="container-fluid">
         <img class="ps-5" alt="Filmotop logo" src="../assets/filmotop.jpg" />
-        <h2 class="ms-5 ps-5">Filmotop</h2>
+        <h2 class="ms-5 ps-5 text-dark">Filmotop</h2>
 
         <button
           class="navbar-toggler"
@@ -23,7 +23,7 @@
           <ul class="navbar-nav pe-5 me-5 ms-auto">
             <li class="nav-item">
               <router-link to="/" style="text-decoration: none">
-                <button id="accueil" class="btn nav-link">
+                <button id="accueil" class="btn p-3 nav-link">
                   Accueil
                 </button>
               </router-link>
@@ -32,7 +32,7 @@
             <!-- DROPDOWN PLUS DE FILMS -->
             <li class="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle text-dark"
+                class="nav-link p-3 dropdown-toggle text-dark"
                 href="#"
                 id="navbarDropdownMenuLink"
                 role="button"
@@ -99,8 +99,13 @@ export default {
 </script>
 
 <style>
+.navbar {
+  border-bottom: #000000 2px solid;
+}
 #accueil {
   color: #000000;
+  font-family: 'Vollkorn', serif;
+  font-size: 30px;
 }
 #accueil:hover {
   transform: scale(1.2);
@@ -109,8 +114,14 @@ export default {
   color: #ffffff;
   background-color: #000000;
 }
+#navbarDropdownMenuLink {
+  font-family: 'Vollkorn', serif;
+  font-size: 30px;
+}
 .moreMovies {
   color: #000000;
+  font-family: 'Vollkorn', serif;
+  font-size: 20px;
 }
 .moreMovies:hover {
   transform: scale(1.2);
@@ -120,7 +131,8 @@ export default {
   background-color: #000000;
 }
 h2 {
+  font-family: 'Playball', cursive;
   font-weight: bold;
-  font-size: 50px;
+  font-size: 60px;
 }
 </style>

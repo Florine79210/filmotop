@@ -47,28 +47,25 @@ export default {
 </script>
 
 <style>
-#movie {
-  border: outset 2px #000000;
-}
 #movie:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition: 1.5s;
+  border: solid 3px #000000;
 }
-h3 {
+#movie h3 {
   font-weight: bold;
-  font-size: 50px; /*  Impossible de changer la taille ???  */
+  font-size: 50px;
   font-family: 'Playball', cursive;
 }
-h4, p {
+#movie h4, p {
   font-family: 'Vollkorn', serif;
-}
-h4 {
   font-size: 30px;
 }
-p {
+#movie p {
+  font-family: 'Vollkorn', serif;
   font-size: 20px;
 }
-span {
+#movie span {
   font-weight: bold;
 }
 </style>

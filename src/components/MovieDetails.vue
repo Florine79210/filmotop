@@ -14,7 +14,7 @@
           <img
             class="pb-4"
             v-bind:src="'http://image.tmdb.org/t/p/w500/' + movie.backdrop_path"
-            width="600px"
+            width="700px"
           />
           <div v-if="movie.tagline !== ''">
             <h4 class="text-center pt-3 pb-4 text-dark">
@@ -42,7 +42,7 @@
                 v-bind:src="
                   'http://image.tmdb.org/t/p/w500/' + movie.poster_path
                 "
-                width="180px"
+                width="300px"
               />
             </div>
           </div>
@@ -92,20 +92,20 @@ export default {
 </script>
 
 <style>
-h3 {
+#movieDetails h3 {
   font-weight: bold;
   font-size: 55px;
   font-family: 'Playball', cursive;
 }
-h4 {
+#movieDetails h4 {
   font-family: 'Playball', cursive;
   font-style: italic;
   font-weight: bold;
   font-size: 40px;
 }
-p {
+#movieDetails p {
   font-family: 'Vollkorn', serif;
-  font-size: 20px;
+  font-size: 25px;
 }
 span {
   font-weight: bold;

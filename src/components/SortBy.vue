@@ -1,6 +1,6 @@
 <template>
   <!-- DROPDOWN TRIER PAR -->
-  <div class="container mt-2 mb-2 text-end">
+  <div class="container mt-2 mb-2">
     <div class="dropdown">
       <a
         style="border-radius: 10px"

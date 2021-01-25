@@ -2,7 +2,7 @@
   <div id="app">
     <Header />
 
-    <!-- <div class="row justify-content-center">
+    <div class="row mt-5 pt-5 justify-content-center">
       <div class="col-md-6 text-cennter">
         <SortBy :movies="movies" />
       </div>
@@ -10,7 +10,7 @@
       <div class="col-md-6 text-center">
         <Search :movies="movies" />
       </div>
-    </div> -->
+    </div>
 
     <div v-if="error === true" class="error text-danger pt-5 mt-5">
       <p>Echec de la requête !!!</p>
@@ -34,8 +34,8 @@ import axios from "axios";
 import MoviesList from "./components/MoviesList.vue";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
-// import SortBy from "./SortBy.vue";
-// import Search from "./Search.vue";
+import SortBy from "./components/SortBy.vue";
+import Search from "./components/Search.vue";
 
 export default {
   name: "App",
@@ -44,8 +44,8 @@ export default {
     MoviesList,
     Header,
     Footer,
-    // SortBy,
-    // Search,
+    SortBy,
+    Search,
   },
 
   data() {

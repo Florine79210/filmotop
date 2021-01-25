@@ -1,7 +1,7 @@
-<!-- <template> -->
+<template>
   <!-- SEARCH BAR -->
-  <!-- <div class="container mt-2 mb-2">
-    <form class="d-flex" v-for="movie in movies" v-bind: key= "movie.title">
+<div class="container mt-2 mb-2">
+    <form class="d-flex">
       <input
         class="form-control me-2 w-50 text-center"
         type="search"
@@ -24,27 +24,27 @@ export default {
 
   props: ["movies"],
 
-  data() {
-    return {
-      searchTitle: false,
-    };
-  },
+  // data() {
+  //   return {
+  //     searchTitle: false,
+  //   };
+  // },
 
-  methods: {
-    searchTitle() {
-      if (!this.searchTitle) {
-        this.searchTitle = true;
-        if ("Search" === movie.title){
-            return this.movie;  
-        }else {
-            console.log("film inconnue");
-        }
+  // methods: {
+  //   searchTitle() {
+  //     if (!this.searchTitle) {
+  //       this.searchTitle = true;
+  //       if ("Search" === movie.title){
+  //           return this.movie;  
+  //       }else {
+  //           console.log("film inconnue");
+  //       }
         
-      } else {
-        this.searchTitle = false;
-      }
-    }
-  }
+  //     } else {
+  //       this.searchTitle = false;
+  //     }
+  //   }
+  // }
 
 };
 </script>

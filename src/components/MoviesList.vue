@@ -5,9 +5,9 @@
         <SortBy :movies="movies" />
       </div>
 
-      <!-- <div class="col-md-6 text-center">
+      <div class="col-md-6 text-center">
         <Search :movies="movies" />
-      </div> -->
+      </div>
     </div>
 
     <li class="list-unstyled" v-for="movie in movies" :key="movie.id">
@@ -27,7 +27,7 @@
 <script>
 import Movie from "./Movie.vue";
 import SortBy from "./SortBy.vue";
-// import Search from "./Search.vue";
+import Search from "./Search.vue";
 
 export default {
   name: "MoviesList",
@@ -35,7 +35,7 @@ export default {
   components: {
     Movie,
     SortBy,
-    // Search,
+    Search,
   },
 };
 </script>

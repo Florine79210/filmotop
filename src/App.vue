@@ -25,6 +25,7 @@
         <router-view :key="$route.fullPath"></router-view>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -32,6 +33,7 @@
 import axios from "axios";
 import MoviesList from "./components/MoviesList.vue";
 import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 // import SortBy from "./SortBy.vue";
 // import Search from "./Search.vue";
 
@@ -41,6 +43,7 @@ export default {
   components: {
     MoviesList,
     Header,
+    Footer,
     // SortBy,
     // Search,
   },

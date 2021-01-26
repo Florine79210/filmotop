@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5 pt-5">
+  <div class="container pt-4 pb-4">
     <div v-if="error === true" class="error text-danger pt-5 mt-5">
       <p>Echec de la requête !!!</p>
     </div>

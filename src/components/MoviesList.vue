@@ -1,16 +1,6 @@
 <template>
   <div class="container">
-    <div class="row pt-3 pb-3 mt-3 mb-3 justify-content-center">
-      <div class="col-md-6 text-cennter">
-        <SortBy :movies="movies" />
-      </div>
-
-      <div class="col-md-6 text-center">
-        <Search :movies="movies" />
-      </div>
-    </div>
-
-    <li class="list-unstyled" v-for="movie in movies" :key="movie.id">
+    <li class="list-unstyled pt-3 pb-3 mt-3 mb-3" v-for="movie in movies" :key="movie.id">
       <Movie
         :id="movie.id"
         :title="movie.title"
@@ -26,16 +16,12 @@
 
 <script>
 import Movie from "./Movie.vue";
-import SortBy from "./SortBy.vue";
-import Search from "./Search.vue";
 
 export default {
   name: "MoviesList",
   props: ["movies"],
   components: {
     Movie,
-    SortBy,
-    Search,
   },
 };
 </script>

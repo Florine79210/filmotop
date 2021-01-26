@@ -2,12 +2,9 @@
   <div id="app">
     <Header />
 
-    <div class="row mt-5 pt-5 justify-content-center">
-      <div class="col-md-6 text-cennter">
+    <div class="row mt-5 pt-5 justify-content-end">
+      <div id="sortSearch" class="col-md-3 text-center">
         <SortBy :movies="movies" />
-      </div>
-
-      <div class="col-md-6 text-center">
         <Search :movies="movies" />
       </div>
     </div>
@@ -16,8 +13,8 @@
       <p>Echec de la requête !!!</p>
     </div>
     <div v-else>
-      <div class="mt-5 pt-5" v-if="$route.path == '/'">
-        <h1 class="text-white mt-5 mb-3">Tous les films:</h1>
+      <div v-if="$route.path == '/'">
+        <h1 class="text-white pt-4 pb-2 mt-5 mb-3">Tous les films:</h1>
         <MoviesList :movies="movies" />
       </div>
 
@@ -95,6 +92,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+#sortSearch {
+  position: absolute;
 }
 .error {
   font-size: 50px;

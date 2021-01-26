@@ -1,10 +1,9 @@
 <template>
   <!-- DROPDOWN TRIER PAR -->
-  <div class="container mt-2 mb-2">
-    <div class="dropdown">
+    <div class="dropdown mt-3 mb-4" id="search">
       <a
-        style="border-radius: 10px"
-        class="dropdown-toggle p-3 text-dark bg-white border border-white"
+        style="border-radius: 5px"
+        class="dropdown-toggle pt-2 pe-5 pb-2 ps-5 text-dark bg-white border border-white"
         href="#"
         id="dropdownSortBy"
         role="button"
@@ -34,14 +33,15 @@
         </li>
       </ul>
     </div>
-  </div>
 </template>
 
 <script>
+// import MoviesList from "./MoviesList";
 export default {
   name: "SortBy",
-
   props: ["movies"],
+  // components:
+  //   MoviesList,
 
   data() {
     return {
@@ -104,6 +104,7 @@ export default {
 </script>
 
 <style >
+
 #dropdownSortBy {
   font-family: 'Vollkorn', serif;
   font-size: 25px;

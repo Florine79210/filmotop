@@ -111,6 +111,6 @@ span {
   font-weight: bold;
 }
 #movieDetails {
-  margin-top: 150px;
+  margin-top: 80px;
 }
 </style>

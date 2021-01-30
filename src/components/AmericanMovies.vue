@@ -31,7 +31,7 @@ export default {
   created: function () {
     axios
       .get(
-        "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&language=fr&region=us&include_adult=false&include_video=false&page=1"
+        "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&language=fr&region=us&original_language=us&include_adult=false&include_video=false&page=1"
       )
       .then((res) => {
         this.movies = res.data.results;
@@ -39,7 +39,7 @@ export default {
 
         axios
           .get(
-            "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&language=fr&region=us&include_adult=false&include_video=false&page=2"
+            "https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&language=fr&region=us&original_language=us&include_adult=false&include_video=false&page=2"
           )
           .then((res) => {
             res.data.results.forEach((movie) => {

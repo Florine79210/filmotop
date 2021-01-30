@@ -36,12 +36,9 @@
 </template>
 
 <script>
-// import MoviesList from "./MoviesList";
 export default {
   name: "SortBy",
   props: ["movies"],
-  // components:
-  //   MoviesList,
 
   data() {
     return {
@@ -72,14 +69,14 @@ export default {
       if (!this.sortedByAverage) {
         this.sortedByAverage = true;
         return this.movies.sort((a, b) => {
-          if (a.vote_average < b.vote_average) return -1;
-          return a.vote_average > b.vote_average ? 1 : 0;
+          if (a.vote_average > b.vote_average) return -1;
+          return a.vote_average < b.vote_average ? 1 : 0;
         });
       } else {
         this.sortedByAverage = false;
-        return this.movies.sort((a, b) => {
-          if (a.vote_average > b.vote_average) return -1;
-          return a.vote_average < b.vote_average ? 1 : 0;
+         return this.movies.sort((a, b) => {
+          if (a.vote_average < b.vote_average) return -1;
+          return a.vote_average > b.vote_average ? 1 : 0;
         });
       }
     },
@@ -88,14 +85,14 @@ export default {
       if (!this.sortedByDate) {
         this.sortedByDate = true;
         return this.movies.sort((a, b) => {
-          if (a.release_date < b.release_date) return -1;
-          return a.release_date > b.release_date ? 1 : 0;
+          if (a.release_date > b.release_date) return -1;
+          return a.release_date < b.release_date ? 1 : 0;
         });
       } else {
         this.sortedByDate = false;
-        return this.movies.sort((a, b) => {
-          if (a.release_date > b.release_date) return -1;
-          return a.release_date < b.release_date ? 1 : 0;
+         return this.movies.sort((a, b) => {
+          if (a.release_date < b.release_date) return -1;
+          return a.release_date > b.release_date ? 1 : 0;
         });
       }
     },

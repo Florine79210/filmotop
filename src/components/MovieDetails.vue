@@ -7,9 +7,10 @@
     <div v-if="error === true" class="error text-danger pt-3">
       <p>Echec de la requête !!!</p>
     </div>
+
     <div v-else>
       <div class="row justify-content-center">
-        <div class="col-10">
+        <div class="col-md-10">
           <h3 class="pt-3 pb-4 text-center text-dark">{{ movie.title }}</h3>
           <img
             class="pb-4"
@@ -21,23 +22,34 @@
               "{{ movie.tagline }}"
             </h4>
           </div>
-          <div class="row justify-content-center">
-            <div class="col-7 align-self-center">
-              <p class="text-start text-dark">
-                <span>Moyenne: </span>{{ movie.vote_average }}
+
+          <div class="row mt-3 mb-3 d-flex justify-content-between">
+            <div class="col-md-6">
+              <p class="text-center text-dark">
+                <span>Moyenne: </span> {{ movie.vote_average }}/10 (
+                {{ movie.vote_count }} votes )
               </p>
-              <p class="text-start text-dark">
-                <span>Date de sortie: </span
-                >{{ movie.release_date | moment("DD/MM/YYYY") }}
-              </p>
-              <div v-if="movie.overview !== ''">
-                <p class="text-start text-dark">
-                  <span>Résumé: </span>{{ movie.overview }}
-                </p>
-              </div>
             </div>
 
-            <div class="col-5 align-self-center">
+            <div class="col-md-6">
+              <p class="text-center text-dark">
+                <span>Date de sortie: </span>
+                {{ movie.release_date | moment("DD/MM/YYYY") }}
+              </p>
+            </div>
+          </div>
+
+          <div class="row mt-3 mb-3 d-flex justify-content-center">
+            <div
+              v-if="movie.overview !== ''"
+              class="col-md-7 align-self-center"
+            >
+              <p class="text-start text-dark">
+                <span>Résumé: </span>{{ movie.overview }}
+              </p>
+            </div>
+
+            <div class="col-md-5 align-self-center">
               <img
                 v-bind:src="
                   'http://image.tmdb.org/t/p/w500/' + movie.poster_path
@@ -46,6 +58,36 @@
               />
             </div>
           </div>
+
+          <div v-if="movie.budget !== 0 || movie.revenue !== 0" class="row mt-3 mb-2 d-flex justify-content-center">
+            <div v-if="movie.budget !== 0" class="col-md-6">
+              <p class="text-center text-dark">
+                <span>Budget: </span> {{ movie.budget }}$
+              </p>
+            </div>
+
+            <div v-if="movie.revenue !== 0" class="col-md-6">
+              <p class="text-center text-dark">
+                <span>Recette: </span> {{ movie.revenue }}$
+              </p>
+            </div>
+          </div>
+
+          <div class="row mt-2 mb-3 d-flex justify-content-center">
+            <div class="col-md-6">
+              <p class="text-center text-dark">
+                <span>Langue originale: </span> "
+                {{ movie.original_language }} "
+              </p>
+            </div>
+
+            <div v-if="movie.original_language !== 'fr'" class="col-md-6">
+              <p class="text-center text-dark">
+                <span>Titre original: </span>{{ movie.original_title }}
+              </p>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -95,16 +137,16 @@ export default {
 #movieDetails h3 {
   font-weight: bold;
   font-size: 55px;
-  font-family: 'Playball', cursive;
+  font-family: "Playball", cursive;
 }
 #movieDetails h4 {
-  font-family: 'Playball', cursive;
+  font-family: "Playball", cursive;
   font-style: italic;
   font-weight: bold;
   font-size: 40px;
 }
 #movieDetails p {
-  font-family: 'Vollkorn', serif;
+  font-family: "Vollkorn", serif;
   font-size: 25px;
 }
 span {

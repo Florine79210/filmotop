@@ -15,7 +15,7 @@
         <div class="col-7 p-4">
           <h3 class="pb-4 text-dark">{{ title }}</h3>
           <h4 class="text-start pb-2 text-dark">
-            <span>Moyenne: </span>{{ vote_average }}
+            <span>Moyenne: </span>{{ vote_average }} /10
           </h4>
           <p class="text-start text-dark">
             <span>Date de sortie: </span
